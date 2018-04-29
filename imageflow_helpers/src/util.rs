@@ -86,10 +86,10 @@ impl Debounce{
         d
     }
     pub fn interval(&self) -> ::chrono::Duration{
-        ::chrono::Duration::nanoseconds((self.interval as u128 * self.ticks_per_second as u128 / 1000000000) as i64)
+        ::chrono::Duration::nanoseconds((self.interval as u64 * self.ticks_per_second as u64 / 1000000000) as i64)
     }
     pub fn set_interval(&mut self, interval: ::chrono::Duration){
-        self.interval = (interval.num_nanoseconds().unwrap_or(0) as u128 * self.ticks_per_second as u128 / 1000000000) as u64;
+        self.interval = (interval.num_nanoseconds().unwrap_or(0) as u64 * self.ticks_per_second as u64 / 1000000000) as u64;
     }
 
     pub fn set_interval_if_stopped(&mut self, interval: ::chrono::Duration){
